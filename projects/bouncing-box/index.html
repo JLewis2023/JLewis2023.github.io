@@ -9,7 +9,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: rgb(128, 0, 122);
+			background-color: rgb(160, 43, 154);
 			font-size: 300%;
 			text-align: center;
 			display: block;
@@ -65,12 +65,9 @@
 			//////////////////////////////////////////////////////////////////
 
 			// TODO 2 - Variable declarations 
-			var positionX = 0
-			var points = 0
-			var speed = 5
-
-
-
+			var positionX = 0;
+			var points = 0;
+			var speed = 10;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -78,30 +75,31 @@
 			*/
 			function update() {
 			  /* Your Function Call Here */
-			  positionX = positionX + 10
-			  moveBoxTo(positionX);
-			  if (positionX>= boardwidth){
-				speed = -speed;
-			  }
-			  if (positionX) {
-				  
-			  }
-			};
+			positionX = positionX + speed
+			moveBoxTo(positionX);
+			if (positionX > boardWidth) {
+				speed *= -1;
+			}
+			if (positionX < 0) {
+				speed *= -1;
+			}
+		};
 
-			/* 
-			This Function will be called each time the box is clicked. Each time it is called,
-			it should increase the points total, increase the speed, and move the box to
-			the left side of the screen.
-			*/
-			function handleBoxClick() {
-				positionX = 0
-				points = points + 1;
-				changeBoxText(points);
-				speed = speed + 5
-				
-				
-
-
+		/* 
+		This Function will be called each time the box is clicked. Each time it is called,
+		it should increase the points total, increase the speed, and move the box to
+		the left side of the screen.
+		*/
+		function handleBoxClick() {
+			positionX = 0
+			points = points + 1;
+			changeBoxText(points);
+			if(speed > 0){
+				speed = speed + 3
+			}
+			else {
+				speed = speed - 3
+			}
 
 			};
 		})();
